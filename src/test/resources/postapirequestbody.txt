@@ -1,0 +1,11 @@
+{
+        "firstname": "Konrad",
+        "lastname": "Saw",
+        "totalprice": 1,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2023-07-26",
+            "checkout": "20123-07-27"
+        },
+        "additionalneeds": "IceCreams"
+    }
