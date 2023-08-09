@@ -15,13 +15,15 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateBookingTests {
+public class CreateBookingTests extends BaseJSONTest {
     private static Logger logger = LogManager.getLogger(CreateBookingTests.class);
+
     @BeforeAll
     public static void setUpOperations() {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
-        RestAssured.baseURI = "https://restful-booker.herokuapp.com";
+        RestAssured.baseURI = testData.getUrl().getBaseUrl();
     }
+
     @Test
     public void newBookingShouldBeAvailableById() {
         // Given
@@ -36,7 +38,6 @@ public class CreateBookingTests {
 
     @Test
     public void createBookingWithoutBodyFileAttached() {
-        String value = "";
         // When
         Response response = given().contentType("application/json").accept("application/json")
                 .body("{\n" +

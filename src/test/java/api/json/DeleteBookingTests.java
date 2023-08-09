@@ -12,15 +12,17 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class DeleteBookingTests {
+public class DeleteBookingTests extends BaseJSONTest {
     private static Logger logger = LogManager.getLogger(DeleteBookingTests.class);
+
     @BeforeAll
     public static void setUpOperations() {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
-        RestAssured.baseURI = "https://restful-booker.herokuapp.com";
+        RestAssured.baseURI = testData.getUrl().getBaseUrl();
     }
+
     @Test
-    public void newBookingShouldBeDeletableById(){
+    public void newBookingShouldBeDeletableById() {
         // Given
         Integer bookingId = CreateAndFindController.createBookingAndReturnIdValue();
         String authorisationToken = AuthorisationController.createAuthorisationToken();
