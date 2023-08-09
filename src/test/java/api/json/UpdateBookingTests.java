@@ -12,15 +12,17 @@ import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class UpdateBookingTests {
+public class UpdateBookingTests extends BaseJSONTest {
     private static Logger logger = LogManager.getLogger(UpdateBookingTests.class);
+
     @BeforeAll
     public static void setUpOperations() {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
-        RestAssured.baseURI = "https://restful-booker.herokuapp.com";
+        RestAssured.baseURI = testData.getUrl().getBaseUrl();
     }
+
     @Test
-    public void newBookingShouldBeEditableById(){
+    public void newBookingShouldBeEditableById() {
         // Given
         Integer bookingId = CreateAndFindController.createBookingAndReturnIdValue();
         String authorisationToken = AuthorisationController.createAuthorisationToken();
